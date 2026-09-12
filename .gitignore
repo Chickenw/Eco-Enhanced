@@ -1,0 +1,28 @@
+﻿# Development backups
+*.bak
+*.bak-*
+*.known-good
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.swp
+
+# Environment / secrets
+.env
+.env.*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# IDE/editor
+.idea/
+.vscode/
+
+# Logs
+*.log
