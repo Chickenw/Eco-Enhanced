@@ -1,13 +1,13 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Pages;
+namespace EcoEnhanced\Pages;
 
 use App\Models\Server;
 use App\Repositories\Daemon\DaemonFileRepository;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use GameNest\GameNestEcoEnhanced\Services\EcoModIoService;
+use EcoEnhanced\Services\EcoModIoService;
 use RuntimeException;
 use Illuminate\Support\Facades\Cache;
 use Throwable;
@@ -15,7 +15,7 @@ use Throwable;
 class EcoMods extends Page
 {
     protected static ?int $navigationSort = 2;
-protected string $view = 'gamenest-eco-enhanced::pages.eco-mods';
+protected string $view = 'eco-enhanced::pages.eco-mods';
 
     public Server $server;
 
@@ -155,7 +155,7 @@ public static function canAccess(): bool
             Notification::make()
                 ->title('mod.io Connected')
                 ->body(
-                    'GameNest successfully connected to the configured mod.io API path.'
+                    'Eco Enhanced successfully connected to the configured mod.io API path.'
                 )
                 ->success()
                 ->send();
@@ -262,7 +262,7 @@ public static function canAccess(): bool
                 }
 
                 /*
-                 * Do not reinstall dependencies GameNest already knows about.
+                 * Do not reinstall dependencies Eco Enhanced already knows about.
                  */
                 if (
                     isset(
@@ -415,19 +415,19 @@ public static function canAccess(): bool
 
         $this->ensureDirectory(
             $repo,
-            '.gamenest',
+            '.eco-enhanced',
             '/'
         );
 
         $this->ensureDirectory(
             $repo,
             'modio',
-            '/.gamenest'
+            '/.eco-enhanced'
         );
 
         $stageName = (string) $modId;
         $stageRoot =
-            '/.gamenest/modio/' .
+            '/.eco-enhanced/modio/' .
             $stageName;
 
         try {
@@ -438,7 +438,7 @@ public static function canAccess(): bool
                 )
             ) {
                 $repo->deleteFiles(
-                    '/.gamenest/modio',
+                    '/.eco-enhanced/modio',
                     [$stageName]
                 );
             }
@@ -446,7 +446,7 @@ public static function canAccess(): bool
             $this->ensureDirectory(
                 $repo,
                 $stageName,
-                '/.gamenest/modio'
+                '/.eco-enhanced/modio'
             );
 
             $archiveName =
@@ -550,7 +550,7 @@ public static function canAccess(): bool
 
             if (count($installedPaths) === 0) {
                 throw new RuntimeException(
-                    'GameNest could not find a supported Mods, UserCode, or Configs structure in ' .
+                    'Eco Enhanced could not find a supported Mods, UserCode, or Configs structure in ' .
                     ($mod['name'] ?? ('mod #' . $modId)) .
                     '.'
                 );
@@ -598,7 +598,7 @@ public static function canAccess(): bool
                     )
                 ) {
                     $repo->deleteFiles(
-                        '/.gamenest/modio',
+                        '/.eco-enhanced/modio',
                         [$stageName]
                     );
                 }
@@ -617,7 +617,7 @@ public static function canAccess(): bool
 
             if ($modId > 0) {
                 Cache::forget(
-                    'gamenest-eco-mod-update-' . $modId
+                    'eco-enhanced-mod-update-' . $modId
                 );
             }
         }
@@ -835,12 +835,12 @@ public static function canAccess(): bool
             $repo = app(DaemonFileRepository::class)
                 ->setServer($this->server);
 
-            $this->ensureDirectory($repo, '.gamenest', '/');
-            $this->ensureDirectory($repo, 'disabled', '/.gamenest');
+            $this->ensureDirectory($repo, '.eco-enhanced', '/');
+            $this->ensureDirectory($repo, 'disabled', '/.eco-enhanced');
             $this->ensureDirectory(
                 $repo,
                 (string) $modId,
-                '/.gamenest/disabled'
+                '/.eco-enhanced/disabled'
             );
 
             foreach (($entry['paths'] ?? []) as $path) {
@@ -851,7 +851,7 @@ public static function canAccess(): bool
                 }
 
                 $destination =
-                    '.gamenest/disabled/' .
+                    '.eco-enhanced/disabled/' .
                     $modId .
                     '/' .
                     ltrim($path, '/');
@@ -916,7 +916,7 @@ public static function canAccess(): bool
                 }
 
                 $source =
-                    '.gamenest/disabled/' .
+                    '.eco-enhanced/disabled/' .
                     $modId .
                     '/' .
                     ltrim($path, '/');
@@ -942,7 +942,7 @@ public static function canAccess(): bool
 
             try {
                 $repo->deleteFiles(
-                    '/.gamenest/disabled',
+                    '/.eco-enhanced/disabled',
                     [(string) $modId]
                 );
             } catch (Throwable) {
@@ -1002,7 +1002,7 @@ public static function canAccess(): bool
 
             /*
              * Protect dependencies that are still required by another
-             * installed GameNest-managed mod.
+             * installed Eco Enhanced-managed mod.
              */
             foreach ($manifest as $otherId => $other) {
                 if ((int) $otherId === $modId || !is_array($other)) {
@@ -1449,7 +1449,7 @@ public static function canAccess(): bool
                         'Install stopped because "' .
                         ltrim($targetPath, '/') .
                         '" already exists. ' .
-                        'GameNest will not overwrite existing mod files during a new installation.'
+                        'Eco Enhanced will not overwrite existing mod files during a new installation.'
                     );
                 }
 
@@ -1822,7 +1822,7 @@ public static function canAccess(): bool
 
     protected function manifestPath(): string
     {
-        return '.gamenest/modio-installed.json';
+        return '.eco-enhanced/modio-installed.json';
     }
 
     protected function readManifest(): array
@@ -1853,7 +1853,7 @@ public static function canAccess(): bool
 
         if ($json === false) {
             throw new RuntimeException(
-                'Unable to encode the GameNest mod manifest.'
+                'Unable to encode the Eco Enhanced mod manifest.'
             );
         }
 

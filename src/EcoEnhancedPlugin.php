@@ -1,18 +1,18 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced;
+namespace EcoEnhanced;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use GameNest\GameNestEcoEnhanced\Pages\EcoOverview;
-use GameNest\GameNestEcoEnhanced\Pages\EcoConfigs;
-use GameNest\GameNestEcoEnhanced\Pages\EcoMods;
+use EcoEnhanced\Pages\EcoOverview;
+use EcoEnhanced\Pages\EcoConfigs;
+use EcoEnhanced\Pages\EcoMods;
 
-class GameNestEcoEnhancedPlugin implements Plugin
+class EcoEnhancedPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'gamenest-eco-enhanced';
+        return 'eco-enhanced';
     }
 
     public function register(Panel $panel): void

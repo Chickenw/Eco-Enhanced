@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Pages;
+namespace EcoEnhanced\Pages;
 
 use App\Models\EggVariable;
 use App\Models\Server;
@@ -11,12 +11,12 @@ use App\Services\Backups\InitiateBackupService;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use GameNest\GameNestEcoEnhanced\Services\EcoApiService;
-use GameNest\GameNestEcoEnhanced\Services\EcoPlayerHistoryService;
-use GameNest\GameNestEcoEnhanced\Services\EcoRconService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWorldWipeService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWipeScheduleService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWipeHistoryService;
+use EcoEnhanced\Services\EcoApiService;
+use EcoEnhanced\Services\EcoPlayerHistoryService;
+use EcoEnhanced\Services\EcoRconService;
+use EcoEnhanced\Services\EcoWorldWipeService;
+use EcoEnhanced\Services\EcoWipeScheduleService;
+use EcoEnhanced\Services\EcoWipeHistoryService;
 use Illuminate\Support\Carbon;
 use RuntimeException;
 use Throwable;
@@ -24,7 +24,7 @@ use Throwable;
 class EcoOverview extends Page
 {
     protected static ?int $navigationSort = 2;
-protected string $view = 'gamenest-eco-enhanced::pages.eco-overview';
+protected string $view = 'eco-enhanced::pages.eco-overview';
 
     public Server $server;
 
@@ -332,7 +332,7 @@ public static function canAccess(): bool
         }
 
         $name = $this->validateActionTarget($entry['name'] ?? '');
-        $reason = $this->cleanReason($this->kickReasons[$index] ?? '', 'Kicked by GameNest');
+        $reason = $this->cleanReason($this->kickReasons[$index] ?? '', 'Kicked by Eco Enhanced');
 
         try {
             $response = $this->rcon('manage kick ' . $name . ', ' . $reason);
@@ -367,7 +367,7 @@ public static function canAccess(): bool
         $hours = trim((string) ($this->banHours[$index] ?? ''));
         $reason = $this->cleanReason(
             $this->kickReasons[$index] ?? '',
-            'Banned by GameNest'
+            'Banned by Eco Enhanced'
         );
 
         if (
@@ -794,14 +794,14 @@ public static function canAccess(): bool
             $live = $this->tryLivePermissionSync(
                 'manage admin ' .
                 $target .
-                ', Added as admin by GameNest'
+                ', Added as admin by Eco Enhanced'
             );
 
             /*
              * Eco may append its internal user UUID to Users.eco when the
              * live RCON command is executed.
              *
-             * GameNest deliberately stores the Steam64/name target instead,
+             * Eco Enhanced deliberately stores the Steam64/name target instead,
              * because it is useful outside the running world and survives
              * world wipes cleanly.
              *
@@ -887,7 +887,7 @@ public static function canAccess(): bool
             $this->tryLivePermissionSync(
                 'manage removeadmin ' .
                 $target .
-                ', Removed by GameNest'
+                ', Removed by Eco Enhanced'
             );
 
             $this->refreshAdminListsInternal();
@@ -940,12 +940,12 @@ public static function canAccess(): bool
             $live = $this->tryLivePermissionSync(
                 'manage whitelist ' .
                 $target .
-                ', Whitelisted by GameNest'
+                ', Whitelisted by Eco Enhanced'
             );
 
             /*
              * Eco may append its internal UUID to Users.eco after the live
-             * whitelist command. Re-apply GameNest's intended persistent
+             * whitelist command. Re-apply Eco Enhanced's intended persistent
              * whitelist values so the config stays Steam64/name based.
              */
             if ($live) {
@@ -1018,7 +1018,7 @@ public static function canAccess(): bool
             $this->tryLivePermissionSync(
                 'manage unwhitelist ' .
                 $target .
-                ', Removed by GameNest'
+                ', Removed by Eco Enhanced'
             );
 
             $this->refreshAdminListsInternal();
@@ -1046,7 +1046,7 @@ public static function canAccess(): bool
 
             $reason = $this->cleanReason(
                 $this->newMuteReason,
-                'Muted by GameNest'
+                'Muted by Eco Enhanced'
             );
 
             $time = trim($this->newMuteTime);
@@ -1167,7 +1167,7 @@ public static function canAccess(): bool
             $this->tryLivePermissionSync(
                 'manage unmute ' .
                 $target .
-                ', Unmuted by GameNest'
+                ', Unmuted by Eco Enhanced'
             );
 
             $this->refreshAdminListsInternal();
@@ -1229,7 +1229,7 @@ public static function canAccess(): bool
             $this->tryLivePermissionSync(
                 'manage unban ' .
                 $target .
-                ', Unbanned by GameNest'
+                ', Unbanned by Eco Enhanced'
             );
 
             $this->refreshAdminListsInternal();
@@ -1447,7 +1447,7 @@ public static function canAccess(): bool
 
             /*
              * Eco's API can know the Steam ID but not return a useful
-             * display name after a wipe. Fall back to GameNest history.
+             * display name after a wipe. Fall back to Eco Enhanced history.
              */
             if ($name === '' && $steamId !== '') {
                 $history = $this->getHistoryIdentityFor(
@@ -1522,7 +1522,7 @@ public static function canAccess(): bool
         }
 
         /*
-         * GameNest history is persistent across world wipes and does not
+         * Eco Enhanced history is persistent across world wipes and does not
          * require Eco's REST API to be online.
          */
         $history = $this->getHistoryIdentityFor($raw);
@@ -1623,7 +1623,7 @@ public static function canAccess(): bool
 
             $reason = $this->cleanReason(
                 $this->manualBanReason,
-                'Banned by GameNest'
+                'Banned by Eco Enhanced'
             );
 
             $permanent = (bool) $this->manualBanPermanent;
@@ -2097,7 +2097,7 @@ public static function canAccess(): bool
                 ->title('Pre-Wipe Backup Started')
                 ->body(
                     'The locked backup is being created. ' .
-                    'GameNest will wipe and restart Eco automatically when it completes.'
+                    'Eco Enhanced will wipe and restart Eco automatically when it completes.'
                 )
                 ->success()
                 ->send();

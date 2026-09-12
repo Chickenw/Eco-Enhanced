@@ -1,18 +1,18 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Providers;
+namespace EcoEnhanced\Providers;
 
 use App\Models\Server;
-use GameNest\GameNestEcoEnhanced\Services\EcoPortAllocator;
+use EcoEnhanced\Services\EcoPortAllocator;
 use Illuminate\Console\Scheduling\Schedule;
-use GameNest\GameNestEcoEnhanced\Services\EcoPlayerHistoryService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWorldWipeService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWipeScheduleService;
-use GameNest\GameNestEcoEnhanced\Services\EcoWipeHistoryService;
+use EcoEnhanced\Services\EcoPlayerHistoryService;
+use EcoEnhanced\Services\EcoWorldWipeService;
+use EcoEnhanced\Services\EcoWipeScheduleService;
+use EcoEnhanced\Services\EcoWipeHistoryService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
-class GameNestEcoEnhancedPluginProvider extends ServiceProvider
+class EcoEnhancedPluginProvider extends ServiceProvider
 {
     public function register(): void
     {
@@ -57,7 +57,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
 
                     } catch (\Throwable $exception) {
                         Log::error(
-                            '[GameNest Eco Enhanced] Failed to configure Eco allocations.',
+                            '[Eco Enhanced] Failed to configure Eco allocations.',
                             [
                                 'server_id' => $server->id,
                                 'error' => $exception->getMessage(),
@@ -68,7 +68,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
 
             } catch (\Throwable $exception) {
                 Log::error(
-                    '[GameNest Eco Enhanced] Server creation listener failed.',
+                    '[Eco Enhanced] Server creation listener failed.',
                     [
                         'server_id' => $server->id,
                         'error' => $exception->getMessage(),
@@ -98,7 +98,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                         }
                     });
             })
-            ->name('gamenest-eco-player-history')
+            ->name('eco-enhanced-player-history')
             ->everyMinute()
             ->withoutOverlapping();
 
@@ -127,20 +127,20 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
 
                             if ($status === 'completed') {
                                 Log::info(
-                                    '[GameNest Eco Enhanced] Eco world wipe completed.',
+                                    '[Eco Enhanced] Eco world wipe completed.',
                                     ['server_id' => $server->id]
                                 );
                             }
 
                             if ($status === 'failed') {
                                 Log::error(
-                                    '[GameNest Eco Enhanced] Eco world wipe cancelled because its Pre-Wipe backup failed or disappeared.',
+                                    '[Eco Enhanced] Eco world wipe cancelled because its Pre-Wipe backup failed or disappeared.',
                                     ['server_id' => $server->id]
                                 );
                             }
                         } catch (\Throwable $exception) {
                             Log::error(
-                                '[GameNest Eco Enhanced] Pending Eco world wipe failed.',
+                                '[Eco Enhanced] Pending Eco world wipe failed.',
                                 [
                                     'server_id' => $server->id,
                                     'error' => $exception->getMessage(),
@@ -149,7 +149,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                         }
                     });
             })
-            ->name('gamenest-eco-world-wipes')
+            ->name('eco-enhanced-world-wipes')
             ->everyMinute()
             ->withoutOverlapping();
 
@@ -202,7 +202,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                             $wipeService->start(
                                 $server,
                                 'scheduled',
-                                'GameNest Scheduler'
+                                'Eco Enhanced Scheduler'
                             );
 
                             /*
@@ -212,7 +212,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                             $scheduleService->markTriggered($server);
 
                             Log::info(
-                                '[GameNest Eco Enhanced] Scheduled Eco wipe started.',
+                                '[Eco Enhanced] Scheduled Eco wipe started.',
                                 [
                                     'server_id' => $server->id,
                                 ]
@@ -224,7 +224,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                              * minute can retry.
                              */
                             Log::error(
-                                '[GameNest Eco Enhanced] Scheduled Eco wipe failed to start.',
+                                '[Eco Enhanced] Scheduled Eco wipe failed to start.',
                                 [
                                     'server_id' => $server->id,
                                     'error' => $exception->getMessage(),
@@ -233,7 +233,7 @@ class GameNestEcoEnhancedPluginProvider extends ServiceProvider
                         }
                     });
             })
-            ->name('gamenest-eco-scheduled-wipes')
+            ->name('eco-enhanced-scheduled-wipes')
             ->everyMinute()
             ->withoutOverlapping();
 

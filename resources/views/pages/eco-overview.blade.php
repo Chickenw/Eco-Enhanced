@@ -484,7 +484,7 @@
                 @php($historyRows = $this->getPlayerHistory())
 
                 <div class="text-xs text-gray-500 dark:text-gray-400">
-                    History begins with GameNest Eco Enhanced v1.1.5. RCON tracks sessions in the background every minute.
+                    History begins with Eco Enhanced v1.1.5. RCON tracks sessions in the background every minute.
                 </div>
 
                 <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-white/10">
@@ -564,7 +564,7 @@
 <div
     x-data="{
         open: (() => {
-            const saved = localStorage.getItem('gamenest-eco-overview-permissions');
+            const saved = localStorage.getItem('eco-enhanced-overview-permissions');
             return saved === null ? true : saved === 'true';
         })()
     }"
@@ -575,7 +575,7 @@
         class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-gray-50 dark:hover:bg-white/5"
         x-on:click="
             open = !open;
-            localStorage.setItem('gamenest-eco-overview-permissions', open ? 'true' : 'false');
+            localStorage.setItem('eco-enhanced-overview-permissions', open ? 'true' : 'false');
         "
     >
         <div class="min-w-0">
@@ -860,7 +860,7 @@
     <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-eco-overview-command-center');
+                const saved = localStorage.getItem('eco-enhanced-overview-command-center');
                 return saved === null ? false : saved === 'true';
             })()
         }"
@@ -872,7 +872,7 @@
             x-on:click="
                 open = !open;
                 localStorage.setItem(
-                    'gamenest-eco-overview-command-center',
+                    'eco-enhanced-overview-command-center',
                     open ? 'true' : 'false'
                 );
             "
@@ -1029,7 +1029,7 @@
                         </div>
 
                         <div class="mt-1 text-xs">
-                            GameNest does not offer partial Eco wipes. The active
+                            Eco Enhanced does not offer partial Eco wipes. The active
                             save must remain internally consistent.
                         </div>
                     </div>
@@ -1075,7 +1075,7 @@
                             color="danger"
                             wire:key="eco-world-wipe"
                             wire:click="wipeEcoWorld"
-                            wire:confirm="WIPE THE ECO WORLD? GameNest will create a locked Pre-Wipe backup first. The wipe will only continue if that backup succeeds. The complete active Eco save will then be reset and Eco will generate a fresh world. Configs and Mods are preserved."
+                            wire:confirm="WIPE THE ECO WORLD? Eco Enhanced will create a locked Pre-Wipe backup first. The wipe will only continue if that backup succeeds. The complete active Eco save will then be reset and Eco will generate a fresh world. Configs and Mods are preserved."
                             wire:loading.attr="disabled"
                         >
                             Wipe Eco World
@@ -1104,7 +1104,7 @@
 
                     <div class="text-xs text-gray-500 dark:text-gray-400">
                         Pre-Wipe backups are locked automatically. If the safety
-                        backup fails, GameNest cancels the wipe and leaves the
+                        backup fails, Eco Enhanced cancels the wipe and leaves the
                         active Eco save untouched.
                     </div>
 
@@ -1363,7 +1363,7 @@
                                             colspan="5"
                                             class="px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400"
                                         >
-                                            No GameNest wipe history has been recorded yet.
+                                            No Eco Enhanced wipe history has been recorded yet.
                                         </td>
                                     </tr>
 

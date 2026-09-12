@@ -1,6 +1,6 @@
 <x-filament-panels::page>
 
-    <div class="gamenest-mods-polish space-y-6">
+    <div class="eco-enhanced-mods-polish space-y-6">
 
         
         {{-- mod.io Authentication --}}
@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            Configure the API endpoint and credentials used by GameNest for mod.io.
+                            Configure the API endpoint and credentials used by Eco Enhanced for mod.io.
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                            Used for GameNest's mod.io catalog and download requests.
+                            Used for Eco Enhanced's mod.io catalog and download requests.
                         </div>
                     </div>
 
@@ -1000,47 +1000,47 @@
 
 
 <style>
-    /* GameNest Eco Mods compact polish */
+    /* Eco Enhanced Eco Mods compact polish */
 
-    .gamenest-mods-polish .fi-section {
+    .eco-enhanced-mods-polish .fi-section {
         --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
     }
 
-    .gamenest-mods-polish .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-mods-polish .space-y-6 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 1rem !important;
     }
 
-    .gamenest-mods-polish .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-mods-polish .space-y-4 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 0.75rem !important;
     }
 
-    .gamenest-mods-polish .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-mods-polish .space-y-3 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 0.55rem !important;
     }
 
-    .gamenest-mods-polish .p-6 {
+    .eco-enhanced-mods-polish .p-6 {
         padding: 1rem !important;
     }
 
-    .gamenest-mods-polish .p-4 {
+    .eco-enhanced-mods-polish .p-4 {
         padding: 0.8rem !important;
     }
 
-    .gamenest-mods-polish .p-3 {
+    .eco-enhanced-mods-polish .p-3 {
         padding: 0.7rem !important;
     }
 
-    .gamenest-mods-polish input,
-    .gamenest-mods-polish select {
+    .eco-enhanced-mods-polish input,
+    .eco-enhanced-mods-polish select {
         min-height: 2.25rem;
     }
 
-    .gamenest-mods-polish button {
+    .eco-enhanced-mods-polish button {
         white-space: nowrap;
     }
 
     @media (max-width: 768px) {
-        .gamenest-mods-polish button {
+        .eco-enhanced-mods-polish button {
             white-space: normal;
         }
     }

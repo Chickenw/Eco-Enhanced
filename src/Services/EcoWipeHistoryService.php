@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\Server;
 use App\Repositories\Daemon\DaemonFileRepository;
@@ -10,7 +10,7 @@ class EcoWipeHistoryService
 {
     protected function path(): string
     {
-        return '.gamenest/wipe-history.json';
+        return '.eco-enhanced/wipe-history.json';
     }
 
     protected function repo(Server $server): DaemonFileRepository
@@ -23,7 +23,7 @@ class EcoWipeHistoryService
     {
         try {
             $this->repo($server)->createDirectory(
-                '.gamenest',
+                '.eco-enhanced',
                 '/'
             );
         } catch (Throwable) {

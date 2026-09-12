@@ -1,14 +1,14 @@
-{
+﻿{
     "id": "eco-enhanced",
     "name": "Eco Enhanced",
     "author": "ChickenWings",
     "version": "1.1.6",
-    "description": "Enhanced Eco server management - compact live players, persistent history, Steam64-aware moderation, offline bans, and dedicated Eco configuration management",
+    "description": "Enhanced Eco server management plugin for the Pelican game server panel - compact live players, persistent history, Steam64-aware moderation, offline bans, and dedicated Eco configuration management",
     "category": "plugin",
     "url": null,
     "update_url": null,
-	"namespace": "EcoEnhanced",
-	"class": "EcoEnhancedPlugin"
+    "namespace": "EcoEnhanced",
+    "class": "EcoEnhancedPlugin",
     "panels": null,
     "panel_version": "^1.0.0-beta38",
     "composer_packages": null,

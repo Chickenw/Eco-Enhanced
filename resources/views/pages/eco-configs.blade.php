@@ -1,8 +1,8 @@
 <x-filament-panels::page>
 
     <div
-        id="gamenest-eco-settings-root"
-        class="gamenest-eco-compact space-y-6"
+        id="eco-enhanced-settings-root"
+        class="eco-enhanced-compact space-y-6"
     >
 
         {{-- Eco Settings Search --}}
@@ -23,13 +23,13 @@
                         type="search"
                         placeholder="Search category, meteor, RCON, Discord, specialties..."
                         autocomplete="off"
-                        oninput="window.gamenestEcoSettingsSearch(this.value)"
+                        oninput="window.ecoEnhancedSettingsSearch(this.value)"
                         class="min-w-0 flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-white/10 dark:bg-gray-900"
                     >
 
                     <button
                         type="button"
-                        onclick="window.gamenestEcoSettingsClear()"
+                        onclick="window.ecoEnhancedSettingsClear()"
                         class="shrink-0 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:border-white/10 dark:bg-gray-900 dark:hover:bg-white/5"
                     >
                         Clear
@@ -46,13 +46,13 @@
         </div>
 
         <script>
-            window.gamenestEcoSettingsSearch = function (value) {
+            window.ecoEnhancedSettingsSearch = function (value) {
                 const query = String(value || '')
                     .trim()
                     .toLowerCase();
 
                 const root = document.getElementById(
-                    'gamenest-eco-settings-root'
+                    'eco-enhanced-settings-root'
                 );
 
                 const status = document.getElementById(
@@ -67,10 +67,10 @@
                  * Remove previous highlighting.
                  */
                 root
-                    .querySelectorAll('.gamenest-eco-search-match')
+                    .querySelectorAll('.eco-enhanced-eco-search-match')
                     .forEach(function (el) {
                         el.classList.remove(
-                            'gamenest-eco-search-match'
+                            'eco-enhanced-search-match'
                         );
 
                         el.style.outline = '';
@@ -105,7 +105,7 @@
 
                 matches.forEach(function (label) {
                     label.classList.add(
-                        'gamenest-eco-search-match'
+                        'eco-enhanced-search-match'
                     );
 
                     label.style.outline =
@@ -144,7 +144,7 @@
                 }
             };
 
-            window.gamenestEcoSettingsClear = function () {
+            window.ecoEnhancedSettingsClear = function () {
                 const input = document.getElementById(
                     'eco-settings-search'
                 );
@@ -155,7 +155,7 @@
 
                 input.value = '';
 
-                window.gamenestEcoSettingsSearch('');
+                window.ecoEnhancedSettingsSearch('');
 
                 input.focus();
             };
@@ -165,7 +165,7 @@
         <div
             x-data="{
                 open: (() => {
-                    const saved = localStorage.getItem('gamenest-eco-configs-game');
+                    const saved = localStorage.getItem('eco-enhanced-configs-game');
                     return saved === null ? true : saved === 'true';
                 })()
             }"
@@ -176,7 +176,7 @@
                 class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-gray-50 dark:hover:bg-white/5"
                 x-on:click="
                     open = !open;
-                    localStorage.setItem('gamenest-eco-configs-game', open ? 'true' : 'false');
+                    localStorage.setItem('eco-enhanced-configs-game', open ? 'true' : 'false');
                 "
             >
                 <div>
@@ -241,7 +241,7 @@
                     <div
                         x-data="{
                             open: (() => {
-                                const saved = localStorage.getItem('gamenest-eco-native-network');
+                                const saved = localStorage.getItem('eco-enhanced-native-network');
                                 return saved === null ? true : saved === 'true';
                             })()
                         }"
@@ -252,7 +252,7 @@
                             class="flex w-full items-center justify-between bg-gray-50 px-4 py-3 text-left dark:bg-white/5"
                             x-on:click="
                                 open = !open;
-                                localStorage.setItem('gamenest-eco-native-network', open ? 'true' : 'false');
+                                localStorage.setItem('eco-enhanced-native-network', open ? 'true' : 'false');
                             "
                         >
                             <span class="font-semibold">Server & Network</span>
@@ -521,7 +521,7 @@
                     <div
                         x-data="{
                             open: (() => {
-                                const saved = localStorage.getItem('gamenest-eco-native-difficulty');
+                                const saved = localStorage.getItem('eco-enhanced-native-difficulty');
                                 return saved === null ? true : saved === 'true';
                             })()
                         }"
@@ -532,7 +532,7 @@
                             class="flex w-full items-center justify-between bg-gray-50 px-4 py-3 text-left dark:bg-white/5"
                             x-on:click="
                                 open = !open;
-                                localStorage.setItem('gamenest-eco-native-difficulty', open ? 'true' : 'false');
+                                localStorage.setItem('eco-enhanced-native-difficulty', open ? 'true' : 'false');
                             "
                         >
                             <span class="font-semibold">Difficulty & Gameplay</span>
@@ -921,7 +921,7 @@
                     <div
                         x-data="{
                             open: (() => {
-                                const saved = localStorage.getItem('gamenest-eco-native-exhaustion');
+                                const saved = localStorage.getItem('eco-enhanced-native-exhaustion');
                                 return saved === null ? false : saved === 'true';
                             })()
                         }"
@@ -933,7 +933,7 @@
                             x-on:click="
                                 open = !open;
                                 localStorage.setItem(
-                                    'gamenest-eco-native-exhaustion',
+                                    'eco-enhanced-native-exhaustion',
                                     open ? 'true' : 'false'
                                 );
                             "
@@ -1156,7 +1156,7 @@
                     <div
                         x-data="{
                             open: (() => {
-                                const saved = localStorage.getItem('gamenest-eco-native-world');
+                                const saved = localStorage.getItem('eco-enhanced-native-world');
                                 return saved === null ? false : saved === 'true';
                             })()
                         }"
@@ -1167,7 +1167,7 @@
                             class="flex w-full items-center justify-between bg-gray-50 px-4 py-3 text-left dark:bg-white/5"
                             x-on:click="
                                 open = !open;
-                                localStorage.setItem('gamenest-eco-native-world', open ? 'true' : 'false');
+                                localStorage.setItem('eco-enhanced-native-world', open ? 'true' : 'false');
                             "
                         >
                             <span class="font-semibold">World Generation</span>
@@ -1224,7 +1224,7 @@
         <div
     x-data="{
         open: (() => {
-            const saved = localStorage.getItem('gamenest-eco-configs-discordlink');
+            const saved = localStorage.getItem('eco-enhanced-configs-discordlink');
             return saved === null ? true : saved === 'true';
         })()
     }"
@@ -1235,7 +1235,7 @@
         class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-gray-50 dark:hover:bg-white/5"
         x-on:click="
             open = !open;
-            localStorage.setItem('gamenest-eco-configs-discordlink', open ? 'true' : 'false');
+            localStorage.setItem('eco-enhanced-configs-discordlink', open ? 'true' : 'false');
         "
     >
         <div class="min-w-0">
@@ -1276,7 +1276,7 @@
 
                     <div class="mt-1">
                         Install DiscordLink from the Eco Mods page first.
-                        GameNest will automatically create its configuration file.
+                        Eco Enhanced will automatically create its configuration file.
                     </div>
 
                     <div class="mt-3">
@@ -1295,11 +1295,11 @@
                 <div class="space-y-8">
 
                     {{-- Discord connection --}}
-<div data-gamenest-collapse="gamenest-discord-connection">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-connection">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-connection');
+                const saved = localStorage.getItem('eco-enhanced-discord-connection');
                 return saved === null ? true : saved === 'true';
             })()
         }"
@@ -1310,7 +1310,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-connection', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-connection', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -1419,11 +1419,11 @@
 </div>
 
 {{-- Eco/server presentation --}}
-<div data-gamenest-collapse="gamenest-discord-server-info">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-server-info">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-server-info');
+                const saved = localStorage.getItem('eco-enhanced-discord-server-info');
                 return saved === null ? true : saved === 'true';
             })()
         }"
@@ -1434,7 +1434,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-server-info', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-server-info', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -1511,11 +1511,11 @@
 </div>
 
 {{-- Chat --}}
-<div data-gamenest-collapse="gamenest-discord-chat-bot">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-chat-bot">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-chat-bot');
+                const saved = localStorage.getItem('eco-enhanced-discord-chat-bot');
                 return saved === null ? true : saved === 'true';
             })()
         }"
@@ -1526,7 +1526,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-chat-bot', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-chat-bot', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -1612,11 +1612,11 @@
 </div>
 
 {{-- Roles --}}
-<div data-gamenest-collapse="gamenest-discord-roles">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-roles">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-roles');
+                const saved = localStorage.getItem('eco-enhanced-discord-roles');
                 return saved === null ? false : saved === 'true';
             })()
         }"
@@ -1627,7 +1627,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-roles', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-roles', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -1701,11 +1701,11 @@
 </div>
 
 {{-- Chat Channel Links --}}
-<div data-gamenest-collapse="gamenest-discord-chat-links">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-chat-links">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-chat-links');
+                const saved = localStorage.getItem('eco-enhanced-discord-chat-links');
                 return saved === null ? true : saved === 'true';
             })()
         }"
@@ -1716,7 +1716,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-chat-links', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-chat-links', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -1887,11 +1887,11 @@
 </div>
 
 {{-- Feed Channels --}}
-<div data-gamenest-collapse="gamenest-discord-feeds">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-feeds">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-feeds');
+                const saved = localStorage.getItem('eco-enhanced-discord-feeds');
                 return saved === null ? false : saved === 'true';
             })()
         }"
@@ -1902,7 +1902,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-feeds', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-feeds', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -2042,11 +2042,11 @@
 </div>
 
 {{-- Server Info Displays --}}
-<div data-gamenest-collapse="gamenest-discord-server-displays">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-server-displays">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-server-displays');
+                const saved = localStorage.getItem('eco-enhanced-discord-server-displays');
                 return saved === null ? true : saved === 'true';
             })()
         }"
@@ -2057,7 +2057,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-server-displays', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-server-displays', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -2189,11 +2189,11 @@
 </div>
 
 {{-- Advanced --}}
-<div data-gamenest-collapse="gamenest-discord-logging">
+<div data-eco-enhanced-collapse="eco-enhanced-discord-logging">
 <div
         x-data="{
             open: (() => {
-                const saved = localStorage.getItem('gamenest-discord-logging');
+                const saved = localStorage.getItem('eco-enhanced-discord-logging');
                 return saved === null ? false : saved === 'true';
             })()
         }"
@@ -2204,7 +2204,7 @@
             class="flex w-full items-center justify-between gap-4 bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10"
             x-on:click="
                 open = !open;
-                localStorage.setItem('gamenest-discord-logging', open ? 'true' : 'false');
+                localStorage.setItem('eco-enhanced-discord-logging', open ? 'true' : 'false');
             "
         >
             <span class="font-semibold">
@@ -2344,7 +2344,7 @@
         <div
             x-data="{
                 open: (() => {
-                    const saved = localStorage.getItem('gamenest-eco-config-snapshots');
+                    const saved = localStorage.getItem('eco-enhanced-config-snapshots');
                     return saved === null ? false : saved === 'true';
                 })()
             }"
@@ -2356,7 +2356,7 @@
                 x-on:click="
                     open = !open;
                     localStorage.setItem(
-                        'gamenest-eco-config-snapshots',
+                        'eco-enhanced-config-snapshots',
                         open ? 'true' : 'false'
                     );
 
@@ -2396,8 +2396,8 @@
 
                     <div class="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm dark:border-white/10 dark:bg-white/5">
                         Snapshots copy all current <strong>Configs/*.eco</strong>
-                        files into GameNest's protected
-                        <code>/.gamenest/config-backups</code> area.
+                        files into Eco Enhanced's protected
+                        <code>/.eco-enhanced/config-backups</code> area.
                     </div>
 
                     <div class="flex flex-wrap gap-2">
@@ -2461,7 +2461,7 @@
         <div
             x-data="{
                 open: (() => {
-                    const saved = localStorage.getItem('gamenest-eco-configs-raw-editor');
+                    const saved = localStorage.getItem('eco-enhanced-configs-raw-editor');
                     return saved === null ? false : saved === 'true';
                 })()
             }"
@@ -2473,7 +2473,7 @@
                 x-on:click="
                     open = !open;
                     localStorage.setItem(
-                        'gamenest-eco-configs-raw-editor',
+                        'eco-enhanced-configs-raw-editor',
                         open ? 'true' : 'false'
                     );
 
@@ -2516,12 +2516,12 @@
                         <strong>Advanced editor:</strong>
                         Changes made here directly modify the server's .eco files.
                         Invalid values may prevent Eco or a mod from starting correctly.
-                        JSON syntax is validated before GameNest allows a file to be saved.
+                        JSON syntax is validated before Eco Enhanced allows a file to be saved.
                     </div>
 
                     <div
                         x-data="{ ecoEditorModalOpen: false }"
-                        x-on:gamenest-eco-open-raw-editor.window="
+                        x-on:eco-enhanced-open-raw-editor.window="
                             ecoEditorModalOpen = true
                         "
                         class="space-y-4"
@@ -2690,7 +2690,7 @@
         <div
     x-data="{
         open: (() => {
-            const saved = localStorage.getItem('gamenest-eco-configs-users');
+            const saved = localStorage.getItem('eco-enhanced-configs-users');
             return saved === null ? false : saved === 'true';
         })()
     }"
@@ -2701,7 +2701,7 @@
         class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-gray-50 dark:hover:bg-white/5"
         x-on:click="
             open = !open;
-            localStorage.setItem('gamenest-eco-configs-users', open ? 'true' : 'false');
+            localStorage.setItem('eco-enhanced-configs-users', open ? 'true' : 'false');
         "
     >
         <div class="min-w-0">
@@ -2764,9 +2764,9 @@
                         </select>
 
                         <div class="mt-2 max-w-3xl text-xs text-gray-500 dark:text-gray-400">
-                            <strong>Log File Only</strong> is GameNest's default.
+                            <strong>Log File Only</strong> is Eco Enhanced's default.
                             It records administrative commands without showing
-                            GameNest's background RCON queries to players in-game.
+                            Eco Enhanced's background RCON queries to players in-game.
                         </div>
                     </div>
 
@@ -2783,7 +2783,7 @@
                     $adminCommandsLoggingLevel === 'LogFileAndNotifyEveryone'
                 )
                     <div class="rounded-xl border border-warning-300 bg-warning-50 p-4 text-sm text-warning-800 dark:border-warning-500/30 dark:bg-warning-500/10 dark:text-warning-200">
-                        This notification mode can display background GameNest RCON
+                        This notification mode can display background Eco Enhanced RCON
                         commands such as player, admin, whitelist, ban, and mute
                         list refreshes inside Eco.
                     </div>
@@ -2800,23 +2800,23 @@
 @once
     <link
         rel="stylesheet"
-        href="/vendor/gamenest-codemirror/codemirror.min.css"
+        href="/vendor/eco-enhanced-codemirror/codemirror.min.css"
     >
 
     <link
         rel="stylesheet"
-        href="/vendor/gamenest-codemirror/dialog.min.css"
+        href="/vendor/eco-enhanced-codemirror/dialog.min.css"
     >
 
     <style>
-        .gamenest-eco-code-editor {
+        .eco-enhanced-eco-code-editor {
             overflow: hidden;
             border: 1px solid rgb(209 213 219);
             border-radius: 0.75rem;
             background: #0d1117;
         }
 
-        .gamenest-eco-code-editor .CodeMirror {
+        .eco-enhanced-eco-code-editor .CodeMirror {
             height: 620px;
             font-family:
                 ui-monospace,
@@ -2833,46 +2833,46 @@
             color: #e6edf3;
         }
 
-        .gamenest-eco-code-editor .CodeMirror-gutters {
+        .eco-enhanced-eco-code-editor .CodeMirror-gutters {
             background: #161b22;
             border-right: 1px solid #30363d;
         }
 
-        .gamenest-eco-code-editor .CodeMirror-linenumber {
+        .eco-enhanced-eco-code-editor .CodeMirror-linenumber {
             color: #7d8590;
         }
 
-        .gamenest-eco-code-editor .CodeMirror-activeline-background {
+        .eco-enhanced-eco-code-editor .CodeMirror-activeline-background {
             background: rgba(255, 255, 255, 0.045);
         }
 
-        .gamenest-eco-code-editor .CodeMirror-cursor {
+        .eco-enhanced-eco-code-editor .CodeMirror-cursor {
             border-left-color: #ffffff;
         }
 
-        .gamenest-eco-code-editor .CodeMirror-matchingbracket {
+        .eco-enhanced-eco-code-editor .CodeMirror-matchingbracket {
             color: #ffffff !important;
             background: rgba(88, 166, 255, 0.25);
             outline: 1px solid rgba(88, 166, 255, 0.6);
         }
 
-        .gamenest-eco-code-editor .cm-property {
+        .eco-enhanced-eco-code-editor .cm-property {
             color: #79c0ff;
         }
 
-        .gamenest-eco-code-editor .cm-string {
+        .eco-enhanced-eco-code-editor .cm-string {
             color: #a5d6ff;
         }
 
-        .gamenest-eco-code-editor .cm-number {
+        .eco-enhanced-eco-code-editor .cm-number {
             color: #ffa657;
         }
 
-        .gamenest-eco-code-editor .cm-atom {
+        .eco-enhanced-eco-code-editor .cm-atom {
             color: #ff7b72;
         }
 
-        .gamenest-eco-code-editor .cm-keyword {
+        .eco-enhanced-eco-code-editor .cm-keyword {
             color: #ff7b72;
         }
 
@@ -2893,7 +2893,7 @@
         }
 
         @media (max-width: 768px) {
-            .gamenest-eco-code-editor .CodeMirror {
+            .eco-enhanced-eco-code-editor .CodeMirror {
                 height: 480px;
                 font-size: 13px;
             }
@@ -2901,146 +2901,146 @@
     </style>
 
     <script
-        src="/vendor/gamenest-codemirror/codemirror.min.js"
+        src="/vendor/eco-enhanced-codemirror/codemirror.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/javascript.min.js"
+        src="/vendor/eco-enhanced-codemirror/javascript.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/searchcursor.min.js"
+        src="/vendor/eco-enhanced-codemirror/searchcursor.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/search.min.js"
+        src="/vendor/eco-enhanced-codemirror/search.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/dialog.min.js"
+        src="/vendor/eco-enhanced-codemirror/dialog.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/matchbrackets.min.js"
+        src="/vendor/eco-enhanced-codemirror/matchbrackets.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/closebrackets.min.js"
+        src="/vendor/eco-enhanced-codemirror/closebrackets.min.js"
     ></script>
 
     <script
-        src="/vendor/gamenest-codemirror/active-line.min.js"
+        src="/vendor/eco-enhanced-codemirror/active-line.min.js"
     ></script>
 @endonce
 
 
 <style>
-    /* GameNest Eco Configs compact layout */
-    .gamenest-eco-compact label {
+    /* Eco Enhanced Eco Configs compact layout */
+    .eco-enhanced-eco-compact label {
         margin-bottom: 0.2rem !important;
     }
 
-    .gamenest-eco-compact input[type="text"],
-    .gamenest-eco-compact input[type="number"],
-    .gamenest-eco-compact input[type="password"],
-    .gamenest-eco-compact select {
+    .eco-enhanced-eco-compact input[type="text"],
+    .eco-enhanced-eco-compact input[type="number"],
+    .eco-enhanced-eco-compact input[type="password"],
+    .eco-enhanced-eco-compact select {
         padding-top: 0.42rem !important;
         padding-bottom: 0.42rem !important;
     }
 
-    .gamenest-eco-compact textarea:not(.CodeMirror textarea) {
+    .eco-enhanced-eco-compact textarea:not(.CodeMirror textarea) {
         padding-top: 0.5rem !important;
         padding-bottom: 0.5rem !important;
     }
 
-    .gamenest-eco-compact .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-eco-compact .space-y-6 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 1rem !important;
     }
 
-    .gamenest-eco-compact .space-y-5 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-eco-compact .space-y-5 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 0.85rem !important;
     }
 
-    .gamenest-eco-compact .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    .eco-enhanced-eco-compact .space-y-4 > :not([hidden]) ~ :not([hidden]) {
         margin-top: 0.7rem !important;
     }
 
-    .gamenest-eco-compact .gap-4 {
+    .eco-enhanced-eco-compact .gap-4 {
         gap: 0.75rem !important;
     }
 
-    .gamenest-eco-compact .gap-3 {
+    .eco-enhanced-eco-compact .gap-3 {
         gap: 0.6rem !important;
     }
 
-    .gamenest-eco-compact .p-5 {
+    .eco-enhanced-eco-compact .p-5 {
         padding: 1rem !important;
     }
 
-    .gamenest-eco-compact .p-4 {
+    .eco-enhanced-eco-compact .p-4 {
         padding: 0.8rem !important;
     }
 
-    .gamenest-eco-compact .pt-5 {
+    .eco-enhanced-eco-compact .pt-5 {
         padding-top: 0.9rem !important;
     }
 
-    .gamenest-eco-compact .pt-6 {
+    .eco-enhanced-eco-compact .pt-6 {
         padding-top: 1rem !important;
     }
 
-    .gamenest-eco-compact .mb-5 {
+    .eco-enhanced-eco-compact .mb-5 {
         margin-bottom: 0.9rem !important;
     }
 
-    .gamenest-eco-compact .mb-4 {
+    .eco-enhanced-eco-compact .mb-4 {
         margin-bottom: 0.75rem !important;
     }
 
-    .gamenest-eco-compact .mb-3 {
+    .eco-enhanced-eco-compact .mb-3 {
         margin-bottom: 0.55rem !important;
     }
 
-    .gamenest-eco-compact .mt-4 {
+    .eco-enhanced-eco-compact .mt-4 {
         margin-top: 0.75rem !important;
     }
 
-    .gamenest-eco-compact .mt-2 {
+    .eco-enhanced-eco-compact .mt-2 {
         margin-top: 0.35rem !important;
     }
 
-    .gamenest-eco-compact .mt-1 {
+    .eco-enhanced-eco-compact .mt-1 {
         margin-top: 0.18rem !important;
     }
 
     /* Helper text */
-    .gamenest-eco-compact .text-xs {
+    .eco-enhanced-eco-compact .text-xs {
         line-height: 1.25rem !important;
     }
 
     /* Checkbox cards */
-    .gamenest-eco-compact label.rounded-lg.border {
+    .eco-enhanced-eco-compact label.rounded-lg.border {
         padding: 0.55rem 0.7rem !important;
     }
 
     /* Section headers */
-    .gamenest-eco-compact button[class*="px-4"][class*="py-3"] {
+    .eco-enhanced-eco-compact button[class*="px-4"][class*="py-3"] {
         padding-top: 0.6rem !important;
         padding-bottom: 0.6rem !important;
     }
 
-    .gamenest-eco-compact button[class*="px-5"][class*="py-4"] {
+    .eco-enhanced-eco-compact button[class*="px-5"][class*="py-4"] {
         padding-top: 0.75rem !important;
         padding-bottom: 0.75rem !important;
     }
 
     /* Keep the code editor roomy even though everything else is compact. */
-    .gamenest-eco-compact .gamenest-eco-code-editor .CodeMirror {
+    .eco-enhanced-eco-compact .eco-enhanced-eco-code-editor .CodeMirror {
         height: 560px;
     }
 
     @media (max-width: 768px) {
-        .gamenest-eco-compact .gamenest-eco-code-editor .CodeMirror {
+        .eco-enhanced-eco-compact .eco-enhanced-eco-code-editor .CodeMirror {
             height: 440px;
         }
     }

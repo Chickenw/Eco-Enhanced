@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\Server;
 use App\Repositories\Daemon\DaemonFileRepository;
@@ -11,7 +11,7 @@ use Throwable;
 
 class EcoWipeScheduleService
 {
-    private const CONFIG_PATH = 'Configs/GameNestEcoEnhanced.json';
+    private const CONFIG_PATH = 'Configs/EcoEnhanced.json';
 
     public function get(Server $server): array
     {
@@ -164,7 +164,7 @@ class EcoWipeScheduleService
 
         if ($json === false) {
             throw new RuntimeException(
-                'Unable to encode GameNest Eco configuration.'
+                'Unable to encode Eco Enhanced Eco configuration.'
             );
         }
 

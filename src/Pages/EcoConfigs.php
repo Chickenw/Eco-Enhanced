@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Pages;
+namespace EcoEnhanced\Pages;
 
 use App\Models\EggVariable;
 use App\Models\Server;
@@ -19,7 +19,7 @@ class EcoConfigs extends Page
     protected static ?int $navigationSort = 2;
 
     protected string $view =
-        'gamenest-eco-enhanced::pages.eco-configs';
+        'eco-enhanced::pages.eco-configs';
 
     public Server $server;
 
@@ -48,17 +48,17 @@ class EcoConfigs extends Page
     {
         try {
             $this->ensureDaemonDirectory(
-                '.gamenest',
+                '.eco-enhanced',
                 '/'
             );
 
             $this->ensureDaemonDirectory(
                 'config-backups',
-                '/.gamenest'
+                '/.eco-enhanced'
             );
 
             $entries = $this->fileRepo()
-                ->getDirectory('/.gamenest/config-backups');
+                ->getDirectory('/.eco-enhanced/config-backups');
 
             $snapshots = [];
 
@@ -136,13 +136,13 @@ class EcoConfigs extends Page
             }
 
             $this->ensureDaemonDirectory(
-                '.gamenest',
+                '.eco-enhanced',
                 '/'
             );
 
             $this->ensureDaemonDirectory(
                 'config-backups',
-                '/.gamenest'
+                '/.eco-enhanced'
             );
 
             $snapshot =
@@ -151,7 +151,7 @@ class EcoConfigs extends Page
 
             $this->ensureDaemonDirectory(
                 $snapshot,
-                '/.gamenest/config-backups'
+                '/.eco-enhanced/config-backups'
             );
 
             $manifest = [
@@ -171,7 +171,7 @@ class EcoConfigs extends Page
                     );
 
                 $this->fileRepo()->putContent(
-                    '.gamenest/config-backups/' .
+                    '.eco-enhanced/config-backups/' .
                     $snapshot .
                     '/' .
                     $file,
@@ -182,7 +182,7 @@ class EcoConfigs extends Page
             }
 
             $this->fileRepo()->putContent(
-                '.gamenest/config-backups/' .
+                '.eco-enhanced/config-backups/' .
                 $snapshot .
                 '/manifest.json',
                 json_encode(
@@ -227,7 +227,7 @@ class EcoConfigs extends Page
             ) !== 1
         ) {
             throw new RuntimeException(
-                'Select a valid GameNest config snapshot.'
+                'Select a valid Eco Enhanced config snapshot.'
             );
         }
 
@@ -244,7 +244,7 @@ class EcoConfigs extends Page
 
             $manifestContent =
                 $this->fileRepo()->getContent(
-                    '.gamenest/config-backups/' .
+                    '.eco-enhanced/config-backups/' .
                     $snapshot .
                     '/manifest.json',
                     1024 * 1024
@@ -281,7 +281,7 @@ class EcoConfigs extends Page
 
                 $content =
                     $this->fileRepo()->getContent(
-                        '.gamenest/config-backups/' .
+                        '.eco-enhanced/config-backups/' .
                         $snapshot .
                         '/' .
                         $file,
@@ -798,7 +798,7 @@ class EcoConfigs extends Page
         $this->validateRawEcoJson(false);
 
         $this->dispatch(
-            'gamenest-eco-open-raw-editor'
+            'eco-enhanced-open-raw-editor'
         );
     }
 
@@ -836,7 +836,7 @@ class EcoConfigs extends Page
             $this->validateRawEcoJson(false);
 
             $this->dispatch(
-                'gamenest-eco-raw-loaded',
+                'eco-enhanced-raw-loaded',
                 content: $this->rawEcoContent
             );
 
@@ -970,7 +970,7 @@ class EcoConfigs extends Page
                 $this->rawEcoContent;
 
             $this->dispatch(
-                'gamenest-eco-raw-loaded',
+                'eco-enhanced-raw-loaded',
                 content: $this->rawEcoContent
             );
 
@@ -1027,7 +1027,7 @@ class EcoConfigs extends Page
         $this->validateRawEcoJson(false);
 
         $this->dispatch(
-            'gamenest-eco-raw-loaded',
+            'eco-enhanced-raw-loaded',
             content: $this->rawEcoContent
         );
 
@@ -2241,7 +2241,7 @@ class EcoConfigs extends Page
             );
 
             /*
-             * Preserve Eco's complete generator configuration. GameNest
+             * Preserve Eco's complete generator configuration. Eco Enhanced
              * deliberately edits dimensions only.
              */
             $data['Dimensions']['WorldWidth'] = $size;
@@ -2676,7 +2676,7 @@ class EcoConfigs extends Page
             );
 
             /*
-             * Change only GameNest-exposed settings.
+             * Change only Eco Enhanced-exposed settings.
              * All channel links, feeds, displays, replacements,
              * and future DiscordLink fields remain untouched.
              */

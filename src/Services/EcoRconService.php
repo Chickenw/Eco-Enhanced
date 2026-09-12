@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\EggVariable;
 use App\Models\Server;

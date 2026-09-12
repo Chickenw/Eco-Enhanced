@@ -5,7 +5,7 @@ return [
      * mod.io
      *
      * Authentication is managed through the Eco Mods page and stored
-     * encrypted by GameNest.
+     * encrypted by Eco Enhanced.
      */
 
     /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\Server;
 use App\Repositories\Daemon\DaemonFileRepository;
@@ -381,10 +381,10 @@ class EcoPlayerHistoryService
 
     private function path(Server $server): string
     {
-        $dir = storage_path('app/gamenest-eco-enhanced/player-history');
+        $dir = storage_path('app/eco-enhanced/player-history');
 
         if (!is_dir($dir) && !@mkdir($dir, 0775, true) && !is_dir($dir)) {
-            throw new RuntimeException('Unable to create GameNest player-history directory.');
+            throw new RuntimeException('Unable to create Eco Enhanced player-history directory.');
         }
 
         return $dir . '/server-' . $server->id . '.json';

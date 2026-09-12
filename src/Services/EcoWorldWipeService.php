@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\Server;
 use App\Repositories\Daemon\DaemonFileRepository;
@@ -14,13 +14,13 @@ class EcoWorldWipeService
 {
     public function pendingKey(Server $server): string
     {
-        return 'gamenest:eco:pending-wipe:' . $server->id;
+        return 'eco-enhanced:eco:pending-wipe:' . $server->id;
     }
 
     protected function pruneOldPreWipeBackups(Server $server): void
     {
         /*
-         * Keep only the two newest successful GameNest Pre-Wipe backups
+         * Keep only the two newest successful Eco Enhanced Pre-Wipe backups
          * before creating another one.
          *
          * We ONLY touch backups whose names begin with "Pre-Wipe -".
@@ -41,7 +41,7 @@ class EcoWorldWipeService
         foreach ($backups->slice(1) as $backup) {
             /*
              * Pelican intentionally refuses to delete a successful
-             * locked backup. GameNest owns these Pre-Wipe backups, so
+             * locked backup. Eco Enhanced owns these Pre-Wipe backups, so
              * explicitly unlock the old one before deleting it.
              */
             if ($backup->is_locked) {
@@ -79,7 +79,7 @@ class EcoWorldWipeService
         }
 
         /*
-         * Prune old GameNest Pre-Wipe backups first so locked safety
+         * Prune old Eco Enhanced Pre-Wipe backups first so locked safety
          * backups cannot eventually consume all server backup slots.
          */
         $this->pruneOldPreWipeBackups($server);
@@ -229,7 +229,7 @@ class EcoWorldWipeService
         }
 
         $lock = cache()->lock(
-            'gamenest:eco:wipe-lock:' . $server->id,
+            'eco-enhanced:eco:wipe-lock:' . $server->id,
             120
         );
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
@@ -43,7 +43,7 @@ class EcoModIoService
         }
 
         $directory = storage_path(
-            'app/gamenest-eco-enhanced'
+            'app/eco-enhanced'
         );
 
         if (!is_dir($directory)) {
@@ -52,7 +52,7 @@ class EcoModIoService
                 !is_dir($directory)
             ) {
                 throw new RuntimeException(
-                    'Unable to create GameNest settings directory.'
+                    'Unable to create Eco Enhanced settings directory.'
                 );
             }
         }
@@ -89,7 +89,7 @@ class EcoModIoService
         @chmod($path, 0640);
 
         Cache::forget(
-            'gamenest-eco-enhanced.modio.game-id'
+            'eco-enhanced.modio.game-id'
         );
     }
 
@@ -352,13 +352,13 @@ class EcoModIoService
     public function gameId(): int
     {
         return (int) Cache::remember(
-            'gamenest-eco-enhanced.modio.game-id',
+            'eco-enhanced.modio.game-id',
             now()->addDay(),
             function (): int {
                 $slug = strtolower(
                     trim(
                         (string) config(
-                            'gamenest-eco-enhanced.modio_game_slug',
+                            'eco-enhanced.modio_game_slug',
                             'eco'
                         )
                     )
@@ -434,7 +434,7 @@ class EcoModIoService
             ->acceptJson();
 
         /*
-         * API-key authentication is sufficient for GameNest's
+         * API-key authentication is sufficient for Eco Enhanced's
          * current read-only catalog/download operations.
          */
         if ($apiKey !== '') {
@@ -464,7 +464,7 @@ class EcoModIoService
             (string) (
                 $settings['api_path']
                 ?? config(
-                    'gamenest-eco-enhanced.modio_api_path',
+                    'eco-enhanced.modio_api_path',
                     'https://api.mod.io/v1'
                 )
             )
@@ -499,7 +499,7 @@ class EcoModIoService
     protected function settingsPath(): string
     {
         return storage_path(
-            'app/gamenest-eco-enhanced/modio.json'
+            'app/eco-enhanced/modio.json'
         );
     }
 

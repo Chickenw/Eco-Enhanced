@@ -1,6 +1,6 @@
 <?php
 
-namespace GameNest\GameNestEcoEnhanced\Services;
+namespace EcoEnhanced\Services;
 
 use App\Models\Allocation;
 use App\Models\EggVariable;
@@ -115,13 +115,13 @@ class EcoPortAllocator
                     $allocation->ip = $primary->ip;
                     $allocation->port = $port;
                     $allocation->ip_alias = $primary->ip_alias;
-                    $allocation->notes = "GameNest Eco {$type} port";
+                    $allocation->notes = "Eco Enhanced Eco {$type} port";
                     $allocation->is_locked = false;
 
                     $allocation->save();
 
                     Log::info(
-                        '[GameNest Eco Enhanced] Created Eco allocation.',
+                        '[Eco Enhanced] Created Eco allocation.',
                         [
                             'server_id' => $server->id,
                             'type' => $type,
@@ -139,7 +139,7 @@ class EcoPortAllocator
                 $allocation->save();
 
                 Log::info(
-                    '[GameNest Eco Enhanced] Assigned Eco allocation.',
+                    '[Eco Enhanced] Assigned Eco allocation.',
                     [
                         'server_id' => $server->id,
                         'type' => $type,
@@ -161,7 +161,7 @@ class EcoPortAllocator
             /*
              * Eco Playtime default.
              *
-             * GameNest defaults new Eco servers to "All the time".
+             * Eco Enhanced defaults new Eco servers to "All the time".
              * This is Eco's encoded weekly availability value.
              */
             $this->setEnvironmentVariable(
@@ -220,7 +220,7 @@ class EcoPortAllocator
         });
 
         Log::info(
-            '[GameNest Eco Enhanced] Eco networking configured.',
+            '[Eco Enhanced] Eco networking configured.',
             [
                 'server_id' => $server->id,
                 'server_uuid' => $server->uuid,
@@ -249,7 +249,7 @@ class EcoPortAllocator
 
         if (!$eggVariable) {
             Log::warning(
-                '[GameNest Eco Enhanced] RCON_PW Egg variable not found.',
+                '[Eco Enhanced] RCON_PW Egg variable not found.',
                 [
                     'server_id' => $server->id,
                 ]
@@ -295,7 +295,7 @@ class EcoPortAllocator
         );
 
         Log::info(
-            '[GameNest Eco Enhanced] Generated unique Eco RCON password.',
+            '[Eco Enhanced] Generated unique Eco RCON password.',
             [
                 'server_id' => $server->id,
             ]
@@ -317,7 +317,7 @@ class EcoPortAllocator
 
         if (!$eggVariable) {
             Log::warning(
-                '[GameNest Eco Enhanced] Eco Egg variable not found.',
+                '[Eco Enhanced] Eco Egg variable not found.',
                 [
                     'server_id' => $server->id,
                     'environment_variable' => $environmentVariable,
@@ -338,7 +338,7 @@ class EcoPortAllocator
         );
 
         Log::info(
-            '[GameNest Eco Enhanced] Updated Eco environment variable.',
+            '[Eco Enhanced] Updated Eco environment variable.',
             [
                 'server_id' => $server->id,
                 'environment_variable' => $environmentVariable,
