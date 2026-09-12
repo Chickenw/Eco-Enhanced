@@ -1275,7 +1275,7 @@
                     </div>
 
                     <div class="mt-1">
-                        Install DiscordLink from the Eco Mods page first.
+                        Install DiscordLink on the Eco server first.
                         Eco Enhanced will automatically create its configuration file.
                     </div>
 

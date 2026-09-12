@@ -6,7 +6,6 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use EcoEnhanced\Pages\EcoOverview;
 use EcoEnhanced\Pages\EcoConfigs;
-use EcoEnhanced\Pages\EcoMods;
 
 class EcoEnhancedPlugin implements Plugin
 {
@@ -27,7 +26,6 @@ class EcoEnhancedPlugin implements Plugin
             $panel->pages([
                 EcoOverview::class,
                 EcoConfigs::class,
-                EcoMods::class,
             ]);
         }
     }
